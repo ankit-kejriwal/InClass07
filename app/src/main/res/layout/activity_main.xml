@@ -6,13 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="92dp"
+        android:ems="10"
+        android:hint="song"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarLimit"
+        android:layout_width="247dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="16dp"
+        android:text="Limit"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="186dp" />
+
+    <TextView
+        android:id="@+id/textViewlimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarLimit"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:layout_editor_absoluteY="186dp" />
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@android:string/search_go"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarLimit" />
+
+    <ListView
+        android:id="@+id/ListViewSource"
+        android:layout_width="410dp"
+        android:layout_height="350dp"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="377dp" />
+
+    <RadioGroup
+        android:layout_width="177dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearch">
+
+        <RadioButton
+            android:id="@+id/radioButtonTrackRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Track rating" />
+
+        <RadioButton
+            android:id="@+id/radioButtonArtistRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Artist rating" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

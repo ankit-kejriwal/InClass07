@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewlimit;
     SeekBar seekBarLimit;
     Button buttonSearch;
-    RadioButton radioButton;
+    RadioButton radioButtonTrackRating;
+    RadioButton radioButtonArtistRating;
+    ListView listViewSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
         textViewlimit = findViewById(R.id.textViewlimit);
         seekBarLimit = findViewById(R.id.seekBarLimit);
         buttonSearch = findViewById(R.id.buttonSearch);
-        radioButton = findViewById(R.id.radioButton);
+        radioButtonTrackRating = findViewById(R.id.radioButtonTrackRating);
+        radioButtonArtistRating = findViewById(R.id.radioButtonArtistRating);
+        listViewSource = findViewById(R.id.ListViewSource);
+
+
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
