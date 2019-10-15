@@ -169,11 +169,12 @@ public class MainActivity extends AppCompatActivity {
                         song.album_name = newSong.getString("album_name");
                         song.artist_name = newSong.getString("artist_name");
                         String dateTime = newSong.getString("updated_time");
+                        Log.d("HEYO",dateTime);
                         try {
                             SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                             Date newDate = null;
                             newDate = spf.parse(dateTime);
-                            spf = new SimpleDateFormat("mm-dd-yyyy");
+                            spf = new SimpleDateFormat("MM-dd-yyyy");
                             dateTime = spf.format(newDate);
                             System.out.println(dateTime);
 
