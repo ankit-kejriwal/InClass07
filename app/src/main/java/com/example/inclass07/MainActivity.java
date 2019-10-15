@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     String tRating = "s_track_rating=desc";
                     String url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
                     Log.d("demo",url);
-
-//                    q=new&page_size=10&apikey=87b16d1acd389a73b3ab2fb3bfb48ddf
                     new GetNewsAsync().execute(url);
 
                 } else {
@@ -159,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<Album> albums) {
+            AlbumAdapter albumAdapter = new AlbumAdapter(MainActivity.this,R.layout.track,albums);
+            listViewSource.setAdapter(albumAdapter);
             progressDialog.dismiss();
         }
     }

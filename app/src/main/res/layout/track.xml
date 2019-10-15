@@ -25,7 +25,7 @@
         android:text="@string/album" />
 
     <TextView
-        android:id="@+id/textViewname"
+        android:id="@+id/textViewtrackname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="154dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="174dp"
         android:text="@string/artist" />
 
     <TextView
@@ -58,25 +58,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="156dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="180dp"
         android:text="@string/date" />
 
     <TextView
-        android:id="@+id/textViewArtistName"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewDate"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="62dp" />
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="19dp" />
 
     <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewArtistName"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="58dp" />
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="21dp" />
+
 </RelativeLayout>
