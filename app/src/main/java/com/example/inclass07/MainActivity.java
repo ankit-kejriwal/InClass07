@@ -60,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(isConnected()) {
+                    String songname  ="q="+ editTextName.getText().toString();
+                    String apikey = "apikey="+ "87b16d1acd389a73b3ab2fb3bfb48ddf";
+                    String psize = "page_size" + seekBarLimit.getProgress();
+                    String tRating = "s_track_rating=desc";
+                    String url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
+                    Log.d("demo",url);
+
+//                    q=new&page_size=10&apikey=87b16d1acd389a73b3ab2fb3bfb48ddf
+                    new GetNewsAsync().execute(url);
 
                 } else {
                     Toast.makeText(MainActivity.this, "No Active connection", Toast.LENGTH_SHORT).show();
@@ -102,15 +111,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                     String json = stringBuilder.toString();
                     JSONObject root = new JSONObject(json);
-                    JSONArray articles = root.getJSONArray("articles");
-                    for(int i=0;i<20;i++){
-                        JSONObject articleJSON = articles.getJSONObject(i);
+                    JSONObject rootMessage  = root.getJSONObject("message");
+                    JSONObject rootBody  = rootMessage.getJSONObject("body");
+                    JSONArray songs = rootBody.getJSONArray("track_list");
+                    for(int i=0;i<songs.length();i++){
+                        JSONObject songJSON = songs.getJSONObject(i);
+                        JSONObject newSong = songJSON.getJSONObject("track");
+                        Log.d("demo",newSong+"");
                         Album song = new Album();
-                        song.track_name = articleJSON.getString("track_name");
-                        song.track_share_url = articleJSON.getString("track_share_url");
-                        song.album_name = articleJSON.getString("album_name");
-                        song.artist_name = articleJSON.getString("artist_name");
-                        song.updated_time = articleJSON.getString("updated_time");
+                        song.track_name = newSong.getString("track_name");
+                        song.track_share_url = newSong.getString("track_share_url");
+                        song.album_name = newSong.getString("album_name");
+                        song.artist_name = newSong.getString("artist_name");
+                        song.updated_time = newSong.getString("updated_time");
                         result.add(song);
                     }
                 }
@@ -146,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<Album> albums) {
-            Log.d("demo",albums.toString());
+            progressDialog.dismiss();
         }
     }
 }
