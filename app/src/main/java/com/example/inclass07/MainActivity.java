@@ -28,7 +28,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -121,7 +124,25 @@ public class MainActivity extends AppCompatActivity {
                         song.track_share_url = newSong.getString("track_share_url");
                         song.album_name = newSong.getString("album_name");
                         song.artist_name = newSong.getString("artist_name");
-                        song.updated_time = newSong.getString("updated_time");
+
+
+
+                        String dateTime=newSong.getString("updated_time");
+                        try {
+                            SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                            Date newDate = null;
+                            newDate = spf.parse(dateTime);
+                            spf = new SimpleDateFormat("mm-dd-yyyy");
+                            dateTime = spf.format(newDate);
+                            System.out.println(dateTime);
+
+                            Log.e("FRM_DT", dateTime);
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        song.updated_time =dateTime;
                         result.add(song);
                     }
                 }
