@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">InClass07</string>
+    <string name="track">Track:</string>
+    <string name="album">Album:</string>
+    <string name="artist">Artist:</string>
+    <string name="date">Date:</string>
 </resources>
