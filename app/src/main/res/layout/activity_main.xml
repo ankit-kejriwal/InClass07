@@ -22,8 +22,8 @@
 
     <SeekBar
         android:id="@+id/seekBarLimit"
-        android:layout_width="198dp"
-        android:layout_height="20dp"
+        android:layout_width="208dp"
+        android:layout_height="21dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
         android:text="@string/limit"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,10 +43,8 @@
         android:id="@+id/textViewlimit"
         android:layout_width="23dp"
         android:layout_height="22dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/seekBarLimit"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
@@ -63,11 +61,14 @@
 
     <ListView
         android:id="@+id/ListViewSource"
-        android:layout_width="411dp"
-        android:layout_height="426dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        tools:layout_editor_absoluteX="2dp" />
+        android:layout_width="407dp"
+        android:layout_height="395dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -82,13 +83,24 @@
             android:id="@+id/radioButtonTrackRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Track rating" />
+            android:checked="true"
+            android:text="@string/trackrating" />
 
         <RadioButton
             android:id="@+id/radioButtonArtistRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Artist rating" />
+            android:text="@string/artistrating" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/searchresult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

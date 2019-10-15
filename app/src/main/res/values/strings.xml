@@ -5,4 +5,7 @@
     <string name="artist">Artist:</string>
     <string name="date">Date:</string>
     <string name="limit">Limit:</string>
+    <string name="trackrating">Track Rating</string>
+    <string name="artistrating">Artist Rating</string>
+    <string name="searchresult">Search Result</string>
 </resources>

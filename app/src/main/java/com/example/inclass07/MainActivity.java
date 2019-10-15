@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonSearch;
     RadioButton radioButtonTrackRating;
     RadioButton radioButtonArtistRating;
+    RadioGroup radioGroup;
     ListView listViewSource;
 
     @Override
@@ -52,9 +54,51 @@ public class MainActivity extends AppCompatActivity {
         buttonSearch = findViewById(R.id.buttonSearch);
         radioButtonTrackRating = findViewById(R.id.radioButtonTrackRating);
         radioButtonArtistRating = findViewById(R.id.radioButtonArtistRating);
+        radioGroup = findViewById(R.id.radioGroup);
         listViewSource = findViewById(R.id.ListViewSource);
+        seekBarLimit.setMin(5);
+        seekBarLimit.setMax(25);
+        textViewlimit.setText(5+"");
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                View radioButton = radioGroup.findViewById(i);
+                int index = radioGroup.indexOfChild(radioButton);
+                String songname  ="q="+ editTextName.getText().toString();
+                String apikey = "apikey="+ "87b16d1acd389a73b3ab2fb3bfb48ddf";
+                String psize = "page_size" + seekBarLimit.getProgress();
+                String tRating = "s_track_rating=desc";
+                String url ="";
+                switch (index) {
+                    case 0: // first button
+                        url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
+                        new GetNewsAsync().execute(url);
+                        break;
+                    case 1: // secondbutton
+                        tRating = "s_artist_rating=desc";
+                        url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
+                        new GetNewsAsync().execute(url);
+                        break;
+                }
+            }
+        });
 
+        seekBarLimit.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                textViewlimit.setText(String.valueOf(i));
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
