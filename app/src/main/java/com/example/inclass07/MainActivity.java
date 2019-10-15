@@ -168,10 +168,7 @@ public class MainActivity extends AppCompatActivity {
                         song.track_share_url = newSong.getString("track_share_url");
                         song.album_name = newSong.getString("album_name");
                         song.artist_name = newSong.getString("artist_name");
-
-
-
-                        String dateTime=newSong.getString("updated_time");
+                        String dateTime = newSong.getString("updated_time");
                         try {
                             SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                             Date newDate = null;
