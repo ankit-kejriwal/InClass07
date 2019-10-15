@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 int index = radioGroup.indexOfChild(radioButton);
                 String songname  ="q="+ editTextName.getText().toString();
                 String apikey = "apikey="+ "87b16d1acd389a73b3ab2fb3bfb48ddf";
-                String psize = "page_size" + seekBarLimit.getProgress();
+                String psize = "page_size=" + seekBarLimit.getProgress();
                 String tRating = "s_track_rating=desc";
                 String url ="";
                 switch (index) {
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         tRating = "s_artist_rating=desc";
                     }
                     String url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
+
                     new GetNewsAsync().execute(url);
 
                 } else {
@@ -240,10 +241,6 @@ public class MainActivity extends AppCompatActivity {
             AlbumAdapter albumAdapter = new AlbumAdapter(MainActivity.this,R.layout.track,albums);
             listViewSource.setAdapter(albumAdapter);
             progressDialog.dismiss();
-        }
-
-        private void callURL(){
-
         }
     }
 }
