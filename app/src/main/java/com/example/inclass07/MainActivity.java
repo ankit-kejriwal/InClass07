@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -103,16 +106,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        listViewSource.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Album song = (Album) adapterView.getAdapter().getItem(i);
+                Log.d("demo",song.getTrack_share_url());
+                String url = song.getTrack_share_url();
+                Intent j = new Intent(Intent.ACTION_VIEW);
+                j.setData(Uri.parse(url));
+                startActivity(j);
+            }
+        });
+
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(isConnected()) {
                     String songname  ="q="+ editTextName.getText().toString();
                     String apikey = "apikey="+ "87b16d1acd389a73b3ab2fb3bfb48ddf";
-                    String psize = "page_size" + seekBarLimit.getProgress();
-                    String tRating = "s_track_rating=desc";
+                    String psize = "page_size=" + seekBarLimit.getProgress();
+
+                    String tRating ="";
+                    int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+                    if (checkedRadioButtonId == R.id.radioButtonTrackRating) {
+                        tRating = "s_track_rating=desc";
+                    } else {
+                        tRating = "s_artist_rating=desc";
+                    }
                     String url = "http://api.musixmatch.com/ws/1.1/track.search?"+ songname+"&" +psize+"&"+apikey+"&"+tRating;
-                    Log.d("demo",url);
                     new GetNewsAsync().execute(url);
 
                 } else {
@@ -162,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
                     for(int i=0;i<songs.length();i++){
                         JSONObject songJSON = songs.getJSONObject(i);
                         JSONObject newSong = songJSON.getJSONObject("track");
-                        Log.d("demo",newSong+"");
                         Album song = new Album();
                         song.track_name = newSong.getString("track_name");
                         song.track_share_url = newSong.getString("track_share_url");
@@ -220,6 +240,10 @@ public class MainActivity extends AppCompatActivity {
             AlbumAdapter albumAdapter = new AlbumAdapter(MainActivity.this,R.layout.track,albums);
             listViewSource.setAdapter(albumAdapter);
             progressDialog.dismiss();
+        }
+
+        private void callURL(){
+
         }
     }
 }
