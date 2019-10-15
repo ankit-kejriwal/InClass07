@@ -171,14 +171,11 @@ public class MainActivity extends AppCompatActivity {
                         String dateTime = newSong.getString("updated_time");
                         Log.d("HEYO",dateTime);
                         try {
-                            SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                            Date newDate = null;
-                            newDate = spf.parse(dateTime);
-                            spf = new SimpleDateFormat("MM-dd-yyyy");
-                            dateTime = spf.format(newDate);
+                            SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                            dateTime  = new SimpleDateFormat("MM-dd-yyyy").format(simpleDate.parse(dateTime));
                             System.out.println(dateTime);
 
-                            Log.e("FRM_DT", dateTime);
+                            Log.e("Date Time", dateTime);
 
                         } catch (ParseException e) {
                             e.printStackTrace();
